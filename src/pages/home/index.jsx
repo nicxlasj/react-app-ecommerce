@@ -1,5 +1,9 @@
+import LayOut from "../../components/layout";
+
 function Home(){
-    return <h1 className="bg-slate-700 font-bold text-white">This is the home</h1>
+    return <LayOut>
+        Home
+    </LayOut>
 }
 
 export default Home;
