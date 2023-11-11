@@ -27,7 +27,7 @@ function AppRoutes() {
     },
     {
       path: "sign-in",
-      element: <SignIn />
+      element: <SignIn />,
     },
     {
       path: "*",

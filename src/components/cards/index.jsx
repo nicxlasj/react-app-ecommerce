@@ -10,10 +10,10 @@ function Cards() {
   if (cards.length === 0 || cards === null) {
     return <h1>No hay productos :/</h1>;
   }
-  return cards.map((card) => (
+  return cards.map((card, index) => (
     <LayOut>
       <div className="grid grid-cols-4 gap-2">
-          <Card card={card}></Card>
+          <Card card={card} key= {index}></Card>
       </div>
     </LayOut>
   ));
