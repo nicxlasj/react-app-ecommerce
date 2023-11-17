@@ -1,5 +1,11 @@
+import LayOut from "../../components/layout";
+
 function NotFound() {
-    return ( <div className="bg-black text-white font-bold">Not found</div> );
+  return (
+    <LayOut>
+      <div className="bg-black text-white font-bold text-center">Not found</div>
+    </LayOut>
+  );
 }
 
 export default NotFound;
