@@ -6,6 +6,7 @@ import MyOrder from "../myOrder";
 import MyOrders from "../myOrders";
 import NavBar from "../../components/navbar";
 import SignIn from "../signIn";
+import ProductContextProvider from "../../context/ProductContext";
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -40,10 +41,12 @@ function AppRoutes() {
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <AppRoutes></AppRoutes>
-        <NavBar></NavBar>
-      </BrowserRouter>
+      <ProductContextProvider>
+        <BrowserRouter>
+          <AppRoutes></AppRoutes>
+          <NavBar></NavBar>
+        </BrowserRouter>
+      </ProductContextProvider>
     </>
   );
 }

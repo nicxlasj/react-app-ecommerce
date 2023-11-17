@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
+import { useContext } from "react";
 import LayOut from "../layout";
+import { ProductContext } from "../../context/ProductContext";
 import Card from "../card";
 
 function Cards() {
-  const [cards, setCards] = useState([]);
-  useEffect(() => {
-    fetch("https://api.escuelajs.co/api/v1/products")
-      .then((response) => response.json())
-      .then((data) => setCards(data));
-  }, []);
+  const context = useContext(ProductContext);
+  console.log(context);
+  const cards = context.cards;
 
   if (cards.length === 0 || cards === null) {
     return <h1>No hay productos :/</h1>;

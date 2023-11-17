@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import { ProductContext } from "../../context/ProductContext";
+
 function Card(props) {
   const card = props.card;
+  const context = useContext(ProductContext);
   return (
     <div className="grid grid-cols-3 gap-2">
       <div className="bg-white cursor-pointer w-56 h-60 rounded-lg">
@@ -13,7 +17,13 @@ function Card(props) {
             alt="product"
           ></img>
           <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">
-            +
+            <button
+              onClick={() => {
+                context.setCount(context.count + 1);
+              }}
+            >
+              +
+            </button>
           </div>
         </figure>
         <p className="flex justify-between">
