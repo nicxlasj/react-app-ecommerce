@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
+import { PlusCircleIcon } from "@heroicons/react/24/solid";
 
 function Card(props) {
   const card = props.card;
@@ -15,14 +16,19 @@ function Card(props) {
             className="w-full h-full object-cover rounded-lg"
             src={card.images[0]}
             alt="product"
+            onClick={(e) => {
+              e.preventDefault();
+              context.setProductDetail();
+              context.showProduct(card);              
+            }}
           ></img>
-          <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">
+          <div className="absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1">
             <button
               onClick={() => {
                 context.setCount(context.count + 1);
               }}
             >
-              +
+              <PlusCircleIcon className="h-6 w-6 text-white text-lg"></PlusCircleIcon>
             </button>
           </div>
         </figure>

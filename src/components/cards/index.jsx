@@ -6,7 +6,6 @@ import Card from "../card";
 
 function Cards() {
   const context = useContext(ProductContext);
-  console.log(context);
   const cards = context.cards;
 
   if (cards.length === 0 || cards === null) {
