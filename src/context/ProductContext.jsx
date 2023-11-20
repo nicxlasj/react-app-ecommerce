@@ -14,6 +14,7 @@ function ProductContextProvider(props) {
   const [count, setCount] = useState(0);
   const [isProductDetail, setIsProductDetail] = useState(false);
   const [productToShow, setProductToShow] = useState({});
+  const [shoppingCart, setShoppingCart]= useState([]);
   const setProductDetail = () => {
     setIsProductDetail(!isProductDetail);
   };
@@ -31,7 +32,9 @@ function ProductContextProvider(props) {
         isProductDetail,
         productToShow,
         setProductToShow,
-        showProduct
+        showProduct,
+        shoppingCart,
+        setShoppingCart
       }}
     >
       {props.children}
