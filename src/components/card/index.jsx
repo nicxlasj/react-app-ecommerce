@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { CheckIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 
 function Card(props) {
   const card = props.card;
@@ -8,8 +8,18 @@ function Card(props) {
   const addProductsToCart = () => {
     context.setCount(context.count + 1);
     context.setShoppingCart([...context.shoppingCart, card]);
+    context.setProductInCart();
     console.log(context.shoppingCart);
   };
+
+  const searchCard = (card) => {
+    const found = context.shoppingCart.find((val) => val.id === card.id);
+    if (found === null) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <div className="grid grid-cols-3 gap-2">
       <div className="bg-white cursor-pointer w-56 h-60 rounded-lg">
@@ -29,7 +39,7 @@ function Card(props) {
           ></img>
           <div className="absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1">
             <button onClick={() => addProductsToCart()}>
-              <PlusCircleIcon className="h-6 w-6 text-white text-lg"></PlusCircleIcon>
+              {searchCard(card) ?<PlusCircleIcon className="h-6 w-6 text-white text-lg"></PlusCircleIcon> : <CheckIcon></CheckIcon>}
             </button>
           </div>
         </figure>

@@ -7,6 +7,7 @@ import MyOrders from "../myOrders";
 import NavBar from "../../components/navbar";
 import SignIn from "../signIn";
 import ProductContextProvider from "../../context/ProductContext";
+import CheckoutSideMenu from "../../components/checkoutSideMenu";
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -33,7 +34,7 @@ function AppRoutes() {
     {
       path: "*",
       element: <NotFound />,
-    },
+    }
   ]);
   return routes;
 }
@@ -45,6 +46,7 @@ function App() {
         <BrowserRouter>
           <AppRoutes></AppRoutes>
           <NavBar></NavBar>
+          <CheckoutSideMenu></CheckoutSideMenu>
         </BrowserRouter>
       </ProductContextProvider>
     </>

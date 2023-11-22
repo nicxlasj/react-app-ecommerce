@@ -85,7 +85,17 @@ function NavBar() {
           <ShoppingCartIcon className="h-6 w-6 text-black text-lg" />
         </li>
         <li>
-        <h4>{context.count}</h4>
+          <h4>{context.count}</h4>
+        </li>
+        <li>
+          <h4
+            className="cursor-pointer font-semibold"
+            onClick={() => {
+              context.setShowCart();
+            }}
+          >
+            {context.isProductInCart ? "Checkout" : undefined}
+          </h4>
         </li>
       </ul>
     </nav>
