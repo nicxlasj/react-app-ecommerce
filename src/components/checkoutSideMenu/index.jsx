@@ -15,9 +15,7 @@ function CheckoutSideMenu() {
         <h1 className="font-bold">Your products</h1>
         <h3>
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
+            onClick={() => {
               context.setShowCart();
             }}
           >

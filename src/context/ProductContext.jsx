@@ -1,3 +1,4 @@
+import { ShieldCheckIcon } from "@heroicons/react/24/solid";
 import { createContext } from "react";
 import { useState, useEffect } from "react";
 
@@ -56,6 +57,13 @@ function ProductContextProvider(props) {
     setIsProductInCart(true);
   };
 
+  const removeProductToCart = (card) => {
+    setShoppingCart(shoppingCart.filter((product)=> product.id !== card.id));
+    const found= cards.find((val)=> val.id === card.id);
+    setCount(count-1);
+    found.isInCart= false;
+  };
+
   return (
     <ProductContext.Provider
       value={{
@@ -72,7 +80,8 @@ function ProductContextProvider(props) {
         setShowCart,
         isShowCart,
         setProductInCart,
-        isProductInCart
+        isProductInCart,
+        removeProductToCart
       }}
     >
       {props.children}

@@ -30,7 +30,7 @@ function ProductDetail() {
           className="w-full h-full rounded-xl'"
         ></img>
       </figure>
-      <h1 className="text-center font-bold">{context.productToShow.price}$</h1>
+      <h1 className="text-center font-bold">${context.productToShow.price}</h1>
 
         <div className="text-center m-2 font-normal">
           <p>{context.productToShow.description}</p>

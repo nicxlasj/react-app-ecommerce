@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
+import { ProductContext } from "../../context/ProductContext";
+
 
 function OrderCard(props) {
   const card = props.card;
+  const context= useContext(ProductContext);
   return (
     <div className="flex justify-between items-center mb-3 ml-2">
       <div className="flex items-center gap-2">
@@ -16,7 +20,7 @@ function OrderCard(props) {
       </div>
       <div className="flex items-center gap-2">
         <p className="text-lg font-medium">${card.price}</p>
-        <XMarkIcon className="h-6 w-6 text-lg cursor-pointer"></XMarkIcon>
+        <XMarkIcon onClick={()=> {context.removeProductToCart(card)}} className="h-6 w-6 text-lg cursor-pointer"></XMarkIcon>
       </div>
     </div>
   );

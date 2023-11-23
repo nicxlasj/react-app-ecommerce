@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
-import { CheckIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
+import { CheckCircleIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 
 function Card(props) {
   const card = props.card;
@@ -8,17 +8,11 @@ function Card(props) {
   const addProductsToCart = () => {
     context.setCount(context.count + 1);
     context.setShoppingCart([...context.shoppingCart, card]);
+    card.isInCart = true;
     context.setProductInCart();
     console.log(context.shoppingCart);
   };
 
-  const searchCard = (card) => {
-    const found = context.shoppingCart.find((val) => val.id === card.id);
-    if (found === null) {
-      return true;
-    }
-    return false;
-  };
 
   return (
     <div className="grid grid-cols-3 gap-2">
@@ -37,9 +31,9 @@ function Card(props) {
               context.showProduct(card);
             }}
           ></img>
-          <div className="absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1">
-            <button onClick={() => addProductsToCart()}>
-              {searchCard(card) ?<PlusCircleIcon className="h-6 w-6 text-white text-lg"></PlusCircleIcon> : <CheckIcon></CheckIcon>}
+          <div className="absolute top-0 right-0 flex justify-center bg-black items-center  w-6 h-6 rounded-full m-2 p-1">
+            <button >
+              {card.isInCart ? <CheckCircleIcon className="h-6 w-6 text-white text-lg"></CheckCircleIcon> : <PlusCircleIcon onClick={() => addProductsToCart()} className="h-6 w-6 text-white text-lg"></PlusCircleIcon>}
             </button>
           </div>
         </figure>

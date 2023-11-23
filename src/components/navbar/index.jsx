@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
 import { NavLink } from "react-router-dom";
-import { BeakerIcon } from "@heroicons/react/24/solid";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 
 const activeStyle = "underline underline-offset-4";
@@ -94,7 +93,7 @@ function NavBar() {
               context.setShowCart();
             }}
           >
-            {context.isProductInCart ? "Checkout" : undefined}
+            {context.isProductInCart ? "View Cart" : undefined}
           </h4>
         </li>
       </ul>
