@@ -23,6 +23,7 @@ function OrderCard(props) {
         <XMarkIcon onClick={()=> {context.removeProductToCart(card)}} className="h-6 w-6 text-lg cursor-pointer"></XMarkIcon>
       </div>
     </div>
+    
   );
 }
 
