@@ -1,4 +1,3 @@
-import { ShieldCheckIcon } from "@heroicons/react/24/solid";
 import { createContext } from "react";
 import { useState, useEffect } from "react";
 
@@ -41,6 +40,10 @@ function ProductContextProvider(props) {
 
   const [isProductInCart, setIsProductInCart] = useState(false);
 
+  // Declarando state de orden
+
+  const [order, setOrder]= useState([]);
+
   const setProductDetail = () => {
     setIsProductDetail(!isProductDetail);
   };
@@ -81,7 +84,9 @@ function ProductContextProvider(props) {
         isShowCart,
         setProductInCart,
         isProductInCart,
-        removeProductToCart
+        removeProductToCart,
+        order,
+        setOrder
       }}
     >
       {props.children}
