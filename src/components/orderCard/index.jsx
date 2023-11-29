@@ -5,7 +5,9 @@ import { ProductContext } from "../../context/ProductContext";
 
 function OrderCard(props) {
   const card = props.card;
+  const markIcon= props.markIcon;
   const context= useContext(ProductContext);
+  console.log(card);
   return (
     <div className="flex justify-between items-center mb-3 ml-2">
       <div className="flex items-center gap-2">
@@ -20,7 +22,7 @@ function OrderCard(props) {
       </div>
       <div className="flex items-center gap-2">
         <p className="text-lg font-medium">${card.price}</p>
-        <XMarkIcon onClick={()=> {context.removeProductToCart(card)}} className="h-6 w-6 text-lg cursor-pointer"></XMarkIcon>
+        {markIcon ? <XMarkIcon onClick={()=> {context.removeProductToCart(card)}} className="h-6 w-6 text-lg cursor-pointer"></XMarkIcon> : undefined}
       </div>
     </div>
     

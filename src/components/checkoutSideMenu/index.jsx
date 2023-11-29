@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { ProductContext } from "../../context/ProductContext";
 import OrderCard from "../orderCard";
@@ -8,6 +9,7 @@ import "./styles.css";
 function CheckoutSideMenu() {
   const context = useContext(ProductContext);
   const date = new Date();
+  const markIcon= true;
   if (context.isShowCart === false) {
     return <></>;
   }
@@ -22,7 +24,6 @@ function CheckoutSideMenu() {
       return;
     }
     context.setCount(0);
-    console.log(newOrder);
     context.setOrder([...context.order, newOrder]);
     context.setShoppingCart([]);
   };
@@ -41,7 +42,7 @@ function CheckoutSideMenu() {
         </h3>
       </div>
       {context.shoppingCart.map((card, index) => (
-        <OrderCard card={card} key={index}></OrderCard>
+        <OrderCard markIcon= {markIcon} card={card} key={index}></OrderCard>
       ))}
       <div className="px-6">
         <p className="flex justify-between items-center">
@@ -51,14 +52,16 @@ function CheckoutSideMenu() {
           </span>
         </p>
         <br />
-        <button
-          className="bg-black py-3 text-white w-full rounded-lg"
-          onClick={() => {
-            addOrder();
-          }}
-        >
-          Checkout
-        </button>
+        <Link to= "/my-orders/last">
+          <button
+            className="bg-black py-3 text-white w-full rounded-lg"
+            onClick={() => {
+              addOrder();
+            }}
+          >
+            Checkout
+          </button>
+        </Link>
       </div>
     </aside>
   );
