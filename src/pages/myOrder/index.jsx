@@ -9,6 +9,9 @@ function MyOrder() {
   const order = context.order;
   const lastOrder = order.slice(-1)[0];
   console.log(lastOrder);
+  if(order.length === 0 || order === undefined){
+    return <h1>No hay ordenes</h1>
+  }
 
   return (
     <LayOut>
@@ -19,6 +22,7 @@ function MyOrder() {
           <OrderCard key={i} card={product} markIcon={markIcon}></OrderCard>
         ))}
       </div>
+      <h1>Total Price: {lastOrder.totalPrice}</h1>
     </LayOut>
   );
 }

@@ -7,7 +7,6 @@ function OrderCard(props) {
   const card = props.card;
   const markIcon= props.markIcon;
   const context= useContext(ProductContext);
-  console.log(card);
   return (
     <div className="flex justify-between items-center mb-3 ml-2">
       <div className="flex items-center gap-2">

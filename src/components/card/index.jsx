@@ -10,7 +10,6 @@ function Card(props) {
     context.setShoppingCart([...context.shoppingCart, card]);
     card.isInCart = true;
     context.setProductInCart();
-    console.log(context.shoppingCart);
   };
 
 

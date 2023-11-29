@@ -8,14 +8,14 @@ import "./styles.css";
 
 function CheckoutSideMenu() {
   const context = useContext(ProductContext);
-  const date = new Date();
+  const date = new Date().toDateString();
   const markIcon= true;
   if (context.isShowCart === false) {
     return <></>;
   }
   const addOrder = () => {
     const newOrder = {
-      date: date.getDate().toString(),
+      date: date,
       products: context.shoppingCart,
       totalProducts: context.shoppingCart.length,
       totalPrice: totalPrice(context.shoppingCart),
