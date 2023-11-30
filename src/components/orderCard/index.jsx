@@ -12,7 +12,7 @@ function OrderCard(props) {
       <div className="flex items-center gap-2">
         <figure className="w-20 h-20">
           <img
-            src={card?.images[0]}
+            src={card.images[0]}
             alt=""
             className="w-full h-full rounded-lg object-cover"
           ></img>

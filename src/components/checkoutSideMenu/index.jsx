@@ -15,6 +15,7 @@ function CheckoutSideMenu() {
   }
   const addOrder = () => {
     const newOrder = {
+      id: context.order.length +1,
       date: date,
       products: context.shoppingCart,
       totalProducts: context.shoppingCart.length,
