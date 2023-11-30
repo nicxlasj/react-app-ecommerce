@@ -3,7 +3,7 @@ import LayOut from "../../components/layout";
 function NotFound() {
   return (
     <LayOut>
-      <div className="bg-black text-white font-bold text-center">Not found</div>
+      <h1 className="mt-6">Not found</h1>
     </LayOut>
   );
 }

@@ -17,12 +17,8 @@ function MyOrders() {
         <h1>My Orders</h1>
       </div>
       <div>
-        {context.order.map(element=> (
-          element.products.map((product, index)=> (
-            <Link className="cursor-pointer" to= {'/my-orders/' + element.id}>
-              <OrdersCard card= {product} key= {index}></OrdersCard>
-            </Link>
-          ))
+        {context.order.map((order, i)=> (
+          <OrdersCard key={i} totalPrice= {order.totalPrice} totalProducts= {order.totalProducts} date={order.date} id= {order.id}></OrdersCard>
         ))}
       </div>
     </LayOut>
