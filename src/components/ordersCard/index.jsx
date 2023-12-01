@@ -6,7 +6,7 @@ import { CalendarDaysIcon } from "@heroicons/react/24/solid";
 
 function OrdersCard(props) {
   return (
-    <div className="flex justify-between mb-4 gap-8">
+    <div className="flex justify-between mb-4 gap-8 font-light">
       <ShoppingBagIcon className="h-6 w-6 text-black"></ShoppingBagIcon>
       <h3>{props.totalProducts}</h3>
       <CurrencyDollarIcon className="h-6 w-6 text-black"></CurrencyDollarIcon>

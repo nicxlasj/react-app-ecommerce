@@ -42,7 +42,16 @@ function ProductContextProvider(props) {
 
   // Declarando state de orden
 
-  const [order, setOrder]= useState([]);
+  const [order, setOrder] = useState([]);
+
+  // Declarando los productos filtrados
+
+  const [filteredItems, setFilteredItems] = useState([]);
+
+  // Título del producto
+
+  const [title, setTitle]= useState('');
+
 
   const setProductDetail = () => {
     setIsProductDetail(!isProductDetail);
@@ -61,16 +70,26 @@ function ProductContextProvider(props) {
   };
 
   const removeProductToCart = (card) => {
-    setShoppingCart(shoppingCart.filter((product)=> product.id !== card.id));
-    const found= cards.find((val)=> val.id === card.id);
-    setCount(count-1);
-    found.isInCart= false;
+    setShoppingCart(shoppingCart.filter((product) => product.id !== card.id));
+    const found = cards.find((val) => val.id === card.id);
+    setCount(count - 1);
+    found.isInCart = false;
   };
+
+  const filterProducts=(cards, title)=>{
+    const productsFiltered= cards.filter((card)=> card.title.toLowerCase().includes(title.toLowerCase()));
+    return productsFiltered;
+  }
+
+  useEffect(()=>{
+    setFilteredItems(filterProducts(cards, title));
+  },[title, cards]);
 
   return (
     <ProductContext.Provider
       value={{
         cards,
+        setCards,
         count,
         setCount,
         setProductDetail,
@@ -86,7 +105,11 @@ function ProductContextProvider(props) {
         isProductInCart,
         removeProductToCart,
         order,
-        setOrder
+        setOrder,
+        filteredItems,
+        setFilteredItems,
+        setTitle,
+        title
       }}
     >
       {props.children}

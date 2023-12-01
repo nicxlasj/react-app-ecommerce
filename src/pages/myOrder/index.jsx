@@ -16,7 +16,6 @@ function MyOrder() {
   }
   const params = useParams();
   params.id= parseInt(params.id);
-  console.log(context.order);
   if (params.id > 0) {
     const productToShow = order.find((order) => order.id === params.id);
     lastOrder= productToShow;
