@@ -1,3 +1,4 @@
+import { BoltIcon } from "@heroicons/react/24/solid";
 import { createContext } from "react";
 import { useState, useEffect } from "react";
 
@@ -52,6 +53,11 @@ function ProductContextProvider(props) {
 
   const [title, setTitle]= useState('');
 
+  // Filtrar productos en la página de categorías
+
+  const [filteredByCategory, setfilteredByCategory]= useState([]);
+
+  const [boolForSearch, setBoolForSearch] = useState(false);
 
   const setProductDetail = () => {
     setIsProductDetail(!isProductDetail);
@@ -68,20 +74,31 @@ function ProductContextProvider(props) {
   const setProductInCart = () => {
     setIsProductInCart(true);
   };
-
+  
   const removeProductToCart = (card) => {
     setShoppingCart(shoppingCart.filter((product) => product.id !== card.id));
     const found = cards.find((val) => val.id === card.id);
     setCount(count - 1);
     found.isInCart = false;
   };
-
+  
   const filterProducts=(cards, title)=>{
     const productsFiltered= cards.filter((card)=> card.title.toLowerCase().includes(title.toLowerCase()));
     return productsFiltered;
   }
+  const filterByCategory= (id)=> {
+    const filterByCategory = cards.filter(
+      (card) => card.category.id === id
+    );
+    setBoolForSearch(true);
+    setfilteredByCategory(filterByCategory);
+  }
 
   useEffect(()=>{
+    if(boolForSearch){
+      console.log("Estoy aquí")
+      setfilteredByCategory(filterProducts(filteredByCategory, title));
+    }
     setFilteredItems(filterProducts(cards, title));
   },[title, cards]);
 
@@ -109,7 +126,9 @@ function ProductContextProvider(props) {
         filteredItems,
         setFilteredItems,
         setTitle,
-        title
+        title,
+        filterByCategory,
+        filteredByCategory
       }}
     >
       {props.children}

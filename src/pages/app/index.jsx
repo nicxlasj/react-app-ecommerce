@@ -8,6 +8,7 @@ import NavBar from "../../components/navbar";
 import SignIn from "../signIn";
 import ProductContextProvider from "../../context/ProductContext";
 import CheckoutSideMenu from "../../components/checkoutSideMenu";
+import Categories from "../categories";
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -22,6 +23,10 @@ function AppRoutes() {
     {
       path: "my-order",
       element: <MyOrder />,
+    },
+    {
+      path: "category/:id",
+      element: <Categories />
     },
     {
       path: "my-orders",
