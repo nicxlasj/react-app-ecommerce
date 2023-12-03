@@ -17,17 +17,19 @@ function Cards(props) {
           </LayOut>
         );
       }
-      if (context.title === "") {
-        return context.cards.map((card, index) => (
-          <Card card={card} key={index}></Card>
-        ));
-      }
       if (context.filteredItems.length < context.cards.length) {
         return context.filteredItems.map((card, index) => (
           <Card card={card} key={index}></Card>
-        ));
-      }
-
+          ));
+        }
+        
+        if (context.title === "") {
+          console.log("I'm here");
+          console.log(props.filtered);
+          return props.filtered.map((card, index) => (
+            <Card card={card} key={index}></Card>
+          ));
+        }
       return props.filtered.map((card, index) => (
       <Card card={card} key={index}></Card>
       ));

@@ -23,7 +23,7 @@ function NavBar() {
         </li>
         <li>
           <NavLink
-            to="/category/2"
+            to="/category/1"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Clothes
@@ -31,7 +31,7 @@ function NavBar() {
         </li>
         <li>
           <NavLink
-            to="/category/4"
+            to="/category/3"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Furnitures
@@ -39,15 +39,15 @@ function NavBar() {
         </li>
         <li>
           <NavLink
-            to="/category/1"
+            to="/category/2"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Computers
+            Electronics
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="category/3"
+            to="category/4"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Shoes

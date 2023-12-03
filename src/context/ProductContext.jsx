@@ -82,7 +82,11 @@ function ProductContextProvider(props) {
     found.isInCart = false;
   };
   
-  const filterProducts=(cards, title)=>{
+  const filterProducts=(cards, title, bool=false)=>{
+    if(bool){
+      const productsFiltered= filteredByCategory.filter((card)=> card.title.toLowerCase().includes(title.toLowerCase()));
+    return productsFiltered;  
+    }
     const productsFiltered= cards.filter((card)=> card.title.toLowerCase().includes(title.toLowerCase()));
     return productsFiltered;
   }
@@ -90,14 +94,15 @@ function ProductContextProvider(props) {
     const filterByCategory = cards.filter(
       (card) => card.category.id === id
     );
+    console.log(filterByCategory);
     setBoolForSearch(true);
     setfilteredByCategory(filterByCategory);
   }
 
   useEffect(()=>{
     if(boolForSearch){
-      console.log("Estoy aquí")
-      setfilteredByCategory(filterProducts(filteredByCategory, title));
+      console.log(filteredByCategory);
+      setfilteredByCategory(filterProducts(filteredByCategory, title, boolForSearch));
     }
     setFilteredItems(filterProducts(cards, title));
   },[title, cards]);
